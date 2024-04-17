@@ -29,6 +29,8 @@ public class RegisterPage extends BaseClass {
 	WebElement FacebbokApi;
 	@FindBy(id = "com.kableone.tveverywhere:id/googleSignIn")
 	WebElement GoogleApi;
+	@FindBy(id = "com.kableone.tveverywhere:id/backBtnIV")
+	WebElement RegisterBackBtn;
 	
 	
 	public RegisterPage() {
@@ -52,9 +54,12 @@ public class RegisterPage extends BaseClass {
   public boolean Validatetitle(){
 		 return ActionClass.isDisplayed(driver, FormTitle);
 		  
-		  
-		  
 	  }
+  public void ValidateBackBtn() {
+	  ActionClass.click(driver, RegisterBackBtn);
+	 ActionClass.isDisplayed(driver, RegisterNowBtn);
+	  
+  }
 	  
   }
 

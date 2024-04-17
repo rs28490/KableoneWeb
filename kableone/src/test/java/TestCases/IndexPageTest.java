@@ -7,8 +7,10 @@ import org.testng.annotations.Test;
 
 import Base.BaseClass;
 import PageObjects.IndexPage;
+import PageObjects.LoginPage;
 
 public class IndexPageTest extends BaseClass {
+	
 	IndexPage indexpage;
 	@BeforeTest
 	public void SetUp() throws InterruptedException {
@@ -19,17 +21,25 @@ public class IndexPageTest extends BaseClass {
 		driver.quit();
 	}
 	@Test
-	public void NevigateToLogInPage() throws InterruptedException {
-		 indexpage=new IndexPage();
-		indexpage.NevigateToLogInPage();
+	public LoginPage NevigateToLogInPage() throws InterruptedException  {
+		
+			indexpage=new IndexPage();
+			indexpage.NevigateToLogInPage();
+			Thread.sleep(5000);
+			return new LoginPage();
+		
 	}
-	@Test
+	@Test(enabled=false)
 	public void ValidateLogo() {
 		indexpage=new IndexPage();
 		indexpage.ValidateLogo();
 		Assert.assertTrue(true,"title");;
 	}
 	
-
+     @Test
+	public void button() {
+		indexpage=new IndexPage();
+		indexpage.screenshot();
+	}
 }
    

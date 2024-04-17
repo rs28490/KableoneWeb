@@ -6,6 +6,8 @@ import org.testng.annotations.Test;
 
 import ActionDriver.ActionClass;
 import Base.BaseClass;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 
 public class IndexPage extends BaseClass {
 	
@@ -24,7 +26,7 @@ public class IndexPage extends BaseClass {
 	
 	public LoginPage NevigateToLogInPage() throws InterruptedException {
 		ActionClass.click(driver, ProfileTab);
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		ActionClass.click(driver, LogInLink);
 		return new LoginPage();
 		
@@ -34,6 +36,11 @@ public class IndexPage extends BaseClass {
 		
 		ActionClass.isDisplayed(driver, LogoName);
 		return title;
+	}
+	public void screenshot() {
+	      driver.pressKey(new KeyEvent()
+	    	      .withKey(AndroidKey.VOLUME_DOWN)
+	    	      .withKey(AndroidKey.POWER));  	
 	}
 }
 

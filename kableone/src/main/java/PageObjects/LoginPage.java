@@ -1,16 +1,18 @@
 package PageObjects;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import com.codeborne.selenide.commands.IsDisplayed;
+
 import ActionDriver.ActionClass;
 import Base.BaseClass;
 
 public class LoginPage extends BaseClass {
 	
-	
-	String Username="rs284909@gmail.com";
-	String Password = "12345";
 	@FindBy(xpath = "(//android.widget.ImageView[@resource-id=\"com.kableone.tveverywhere:id/navigation_bar_item_icon_view\"])[4]")
 	WebElement ProfileTab;
 	@FindBy(xpath = "//android.widget.TextView[@text=\"Click here to manage your account.\"]")
@@ -33,39 +35,21 @@ public class LoginPage extends BaseClass {
     WebElement SearchBoxForCountrySearch;
     @FindBy(xpath = "//android.widget.TextView[@resource-id=\"com.kableone.tveverywhere:id/textView_countryName\" and @text=\"India (IN)\"]")
     WebElement CountrySelectIndia;
-    
+    @FindBy (xpath = "(//android.widget.ImageView[@resource-id=\"com.kableone.tveverywhere:id/local_src\"])[9]")
+    WebElement logoutbtn;
+
     
 	
 	public LoginPage() {
-		PageFactory.initElements(driver, this);
+		
+		PageFactory.initElements(driver, this);     
+		
 	}
-	public void NevigateToLogin() throws InterruptedException {
+	public void navigatetologin() {
 		ActionClass.click(driver, ProfileTab);
-		Thread.sleep(2000);
 		ActionClass.click(driver, LogInLink);
-		Thread.sleep(2000);
-		
+		driver.manage().timeouts().getPageLoadTimeout();
 	}
-
-	public void LogInWithValidCredentials() throws InterruptedException {
-		ActionClass.type(EmailPasswordField, Username);
-		ActionClass.type(PasswordField, Password);
-		ActionClass.click(driver, SignInBtn);
-	}
-	  public void ValidateLogin() throws InterruptedException {
-		  ActionClass.click(driver, ProfileTab);
-		  ActionClass.click(driver, AccountBtn);
-		  
-	  }
-	 public void CountrySelection() {
-		 ActionClass.click(driver, CountrySelectionListBtn);
-		 ActionClass.type(SearchBoxForCountrySearch, "india");
-		 ActionClass.click(driver, CountrySelectIndia);
-		
-		 
-		 
-	 }
-	 
  }
 	 
 	
